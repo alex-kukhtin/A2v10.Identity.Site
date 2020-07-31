@@ -1,31 +1,51 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
+<div class="row" style="margin:5rem 0">
+	<div class="col-md-6">
+		<h4>Run Identity</h4>
+		<p><button class="btn btn-default" id="opensite">Open id.gov.ua</button></p>
+	</div>
+	<div class="col-md-6">
+		<h4>Process Identity</h4>
+		<p>
+			<div class="form-group" style="width:100%">
+				<label >url</label>
+				<input class="form-control" id="url"/>
+			</div>
+		</p>
+		<p><button class="btn btn-default" id="process">Process url</button></p>
+	</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+@section scripts {
+	<script type="text/javascript">
+		(function () {
+			$("#opensite").click(async function () {
+				let r = await fetch("/home/geturl", {method:'POST'});
+				let result = await r.json();
+				if (result.status === 'success')
+					window.open(result.url);
+				else
+					alert(result.msg);
+			});
+
+			$("#process").click(async function () {
+				var url = $("#url").val();
+				let prms = { url: url };
+				let r = await fetch("/home/processurl", {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(prms)
+				});
+				let result = await r.json();
+				alert(JSON.stringify(result));
+			});
+		})();
+	</script>
+}

@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="A2v10.Data">
+      <HintPath>C:\Git\A2v10.Data\A2v10.Data\bin\Release\A2v10.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="A2v10.Data.Interfaces">
+      <HintPath>C:\Git\A2v10.Data\A2v10.Data\bin\Release\A2v10.Data.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -174,6 +180,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\A2v10.Identity.Ua\A2v10.Identity.Ua.csproj">
+      <Project>{a3c20939-8976-4bac-8b0c-1134ab760be9}</Project>
+      <Name>A2v10.Identity.Ua</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
