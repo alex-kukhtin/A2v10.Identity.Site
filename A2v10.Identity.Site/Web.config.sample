@@ -12,7 +12,7 @@
 		<add key="webpages:Enabled" value="false"/>
 		<add key="ClientValidationEnabled" value="true"/>
 		<add key="UnobtrusiveJavaScriptEnabled" value="true"/>
-		<add key="id.gov.ua" value="{url:'https://id.gov.ua', callback='https://bookkeeperadmin.azurewebsites.net/api/idgovua/callback', return_url:'asdadad', client_id='ssss', secret='sssss'}"/>
+		<add key="id.gov.ua" value="{url:'https://id.gov.ua', callback='https://mysite/api/idgovua/callback', return_url:'asdadad', client_id='ssss', secret='sssss'}"/>
 	</appSettings>
 	<system.web>
 		<compilation debug="true" targetFramework="4.6.1"/>
