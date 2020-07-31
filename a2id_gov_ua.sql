@@ -103,3 +103,5 @@ begin
 end
 go
 
+
+select * from a2id.UserInfos
